@@ -1,0 +1,162 @@
+.phone-card {
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.phone-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+.phone-card.light {
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+  color: #374151;
+}
+
+.phone-card.dark {
+  background-color: #111827;
+  border-color: #1f2937;
+  color: #d1d5db;
+}
+
+.phone-card.compared {
+  box-shadow: 0 0 0 4px #7c3aed;
+}
+
+.phone-card-image {
+  text-align: center;
+  font-size: 3rem;
+  transition: transform 0.3s;
+}
+
+.phone-card:hover .phone-card-image {
+  transform: scale(1.1);
+}
+
+.phone-card-name {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.phone-card-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #7c3aed;
+}
+
+.phone-card-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.phone-card-highlight {
+  font-size: 0.75rem;
+  color: inherit;
+}
+
+.phone-card-reason {
+  padding: 0.625rem;
+  border-radius: 0.75rem;
+}
+
+.phone-card.light .phone-card-reason {
+  background-color: #ede9fe;
+  color: #111827;
+}
+
+.phone-card.dark .phone-card-reason {
+  background-color: rgba(124, 58, 237, 0.2);
+  color: #e5e7eb;
+}
+
+.phone-card-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.phone-card-links a {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.phone-card.light .phone-card-links a {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.phone-card.light .phone-card-links a:hover {
+  background-color: #e5e7eb;
+}
+
+.phone-card.dark .phone-card-links a {
+  background-color: #1f2937;
+  color: #d1d5db;
+}
+
+.phone-card.dark .phone-card-links a:hover {
+  background-color: #374151;
+}
+
+.phone-card-compare-btn {
+  margin-top: auto;
+  padding: 0.375rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.phone-card.light .phone-card-compare-btn {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.phone-card.light .phone-card-compare-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.phone-card.dark .phone-card-compare-btn {
+  background-color: #1f2937;
+  color: #d1d5db;
+}
+
+.phone-card.dark .phone-card-compare-btn:hover {
+  background-color: #374151;
+}
+
+.phone-card.compared .phone-card-compare-btn {
+  background-color: #7c3aed;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .phone-card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .phone-card-name {
+    font-size: 1rem;
+  }
+
+  .phone-card-price {
+    font-size: 1.125rem;
+  }
+}

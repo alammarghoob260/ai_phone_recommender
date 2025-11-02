@@ -1,4 +1,5 @@
 import React from "react";
+import "./KnowledgeItem.css";
 
 export default function KnowledgeItem({
   icon: Icon,
@@ -7,22 +8,12 @@ export default function KnowledgeItem({
   darkMode,
 }) {
   return (
-    <div
-      className={`p-6 rounded-2xl ${
-        darkMode ? "bg-gray-800/50" : "bg-gray-50"
-      }`}
-    >
-      <div className="flex items-center space-x-3 mb-3">
-        <Icon className="w-8 h-8 text-violet-600" />
-        <h3 className="text-xl font-bold">{title}</h3>
+    <div className={`knowledge-item ${darkMode ? "dark" : "light"}`}>
+      <div className="knowledge-item-header">
+        {Icon && <Icon className="knowledge-item-icon" />}
+        <h3 className="knowledge-item-title">{title}</h3>
       </div>
-      <p
-        className={`${
-          darkMode ? "text-gray-300" : "text-gray-700"
-        } leading-relaxed`}
-      >
-        {children}
-      </p>
+      <p className="knowledge-item-text">{children}</p>
     </div>
   );
 }
