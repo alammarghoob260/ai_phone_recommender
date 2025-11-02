@@ -1,6 +1,6 @@
 import React from "react";
 import { TrendingUp } from "lucide-react";
-import PhoneCard from "./PhoneCard";
+import PhoneCard from "../PhoneCard";
 import "./ResultsSection.css";
 
 export default function ResultsSection({

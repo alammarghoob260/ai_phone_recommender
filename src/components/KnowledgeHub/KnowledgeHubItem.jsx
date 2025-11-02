@@ -1,5 +1,5 @@
 import React from "react";
-import "./KnowledgeItem.css";
+import "./KnowledgeHubItem.css";
 
 export default function KnowledgeItem({
   icon: Icon,

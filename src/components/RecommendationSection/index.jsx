@@ -1,5 +1,5 @@
 import React from "react";
-import PhoneCard from "../PhoneCard/PhoneCard";
+import PhoneCard from "../PhoneCard";
 import { TrendingUp } from "lucide-react";
 import "./RecommendationSection.css";
 

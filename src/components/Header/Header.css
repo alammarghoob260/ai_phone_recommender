@@ -1,4 +1,3 @@
-/* Header container */
 .header {
   position: fixed;
   top: 0;
@@ -31,7 +30,6 @@
   height: 64px;
 }
 
-/* Left logo */
 .header-left {
   display: flex;
   align-items: center;
@@ -57,9 +55,9 @@
 }
 
 .logo-icon {
-  color: white;
   width: 20px;
   height: 20px;
+  color: inherit;
 }
 
 .logo-text {
@@ -85,12 +83,17 @@
   transition: color 0.3s;
 }
 
-.header.light .header-link:hover {
+.header-link:hover {
   color: #7c3aed;
 }
 
-.header.dark .header-link:hover {
-  color: #7c3aed;
+.header-link.knowledge-hub {
+  color: #d946ef;
+  font-weight: 600;
+}
+
+.header-link.knowledge-hub:hover {
+  color: #9333ea;
 }
 
 /* Theme toggle button */
@@ -99,36 +102,46 @@
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.header.light .theme-toggle {
-  background-color: #f3f4f6;
+/* Icon wrapper */
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  padding: 6px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.header.light .theme-toggle:hover {
-  background-color: #e5e7eb;
+.header.light .icon-wrapper {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #1f2937;
 }
 
-.header.dark .theme-toggle {
-  background-color: #1f2937;
+.header.dark .icon-wrapper {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f9fafb;
 }
 
-.header.dark .theme-toggle:hover {
-  background-color: #374151;
+.header .icon-wrapper:hover {
+  background-color: rgba(124, 58, 237, 0.1);
 }
 
-.theme-icon {
-  width: 20px;
-  height: 20px;
+/* Hamburger menu */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Hamburger menu (mobile) */
 .header-hamburger {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 8px;
 }
 
 /* Mobile menu */
@@ -159,19 +172,14 @@
   text-align: left;
   cursor: pointer;
   font-weight: 500;
+  transition: color 0.3s;
 }
 
 .mobile-link:hover {
   color: #7c3aed;
 }
 
-.theme-toggle-mobile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .header-links-desktop {
     display: none;
@@ -181,7 +189,7 @@
     display: block;
   }
 
-  .header-mobile {
-    display: flex;
+  .header-right {
+    gap: 8px;
   }
 }

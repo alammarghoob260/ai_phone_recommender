@@ -20,9 +20,10 @@ export default function Header({
           <span className="logo-text">VisiPhone AI</span>
         </div>
 
+        {/* Desktop links */}
         <div className="header-links-desktop">
           <button
-            className="header-link"
+            className="header-link knowledge-hub"
             onClick={() => setShowKnowledgeHub(!showKnowledgeHub)}
           >
             Knowledge Hub
@@ -33,8 +34,12 @@ export default function Header({
           <a href="#contact" className="header-link">
             Contact
           </a>
+        </div>
+
+        {/* Mobile + Desktop theme toggle + hamburger */}
+        <div className="header-right">
           <button
-            className="theme-toggle"
+            className="theme-toggle icon-wrapper"
             onClick={() => setDarkMode(!darkMode)}
           >
             {darkMode ? (
@@ -43,20 +48,20 @@ export default function Header({
               <Moon className="theme-icon" />
             )}
           </button>
+          <button
+            className="header-hamburger"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
-
-        <button
-          className="header-hamburger"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
       </div>
 
+      {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className={`header-mobile ${darkMode ? "dark" : "light"}`}>
           <button
-            className="mobile-link"
+            className="mobile-link knowledge-hub"
             onClick={() => {
               setShowKnowledgeHub(!showKnowledgeHub);
               setMobileMenuOpen(false);
@@ -70,17 +75,6 @@ export default function Header({
           <a href="#contact" className="mobile-link">
             Contact
           </a>
-          <button
-            className="mobile-link theme-toggle-mobile"
-            onClick={() => setDarkMode(!darkMode)}
-          >
-            <span>Theme</span>
-            {darkMode ? (
-              <Sun className="theme-icon" />
-            ) : (
-              <Moon className="theme-icon" />
-            )}
-          </button>
         </div>
       )}
     </nav>

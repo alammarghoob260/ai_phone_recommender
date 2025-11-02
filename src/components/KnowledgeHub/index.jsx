@@ -1,6 +1,6 @@
 import React from "react";
 import { X } from "lucide-react";
-import KnowledgeItem from "./KnowledgeItem";
+import KnowledgeItem from "./KnowledgeHubItem";
 import "./KnowledgeHub.css";
 
 export default function KnowledgeHub({
