@@ -77,9 +77,9 @@ export default function App() {
         setShowKnowledgeHub={setShowKnowledgeHub}
       />
 
-      {/* <Hero darkMode={darkMode} scrollToForm={scrollToForm} />
+      <Hero darkMode={darkMode} scrollToForm={scrollToForm} />
 
-      <KnowledgeHub
+      {/* <KnowledgeHub
         darkMode={darkMode}
         showKnowledgeHub={showKnowledgeHub}
         setShowKnowledgeHub={setShowKnowledgeHub}
