@@ -79,7 +79,7 @@ export default function App() {
 
       <Hero darkMode={darkMode} scrollToForm={scrollToForm} />
 
-      {/* <KnowledgeHub
+      <KnowledgeHub
         darkMode={darkMode}
         showKnowledgeHub={showKnowledgeHub}
         setShowKnowledgeHub={setShowKnowledgeHub}
@@ -96,7 +96,7 @@ export default function App() {
         generateRecommendations={generateRecommendations}
       />
 
-      {recommendations.length > 0 && (
+      {/* {recommendations.length > 0 && (
         <ResultsSection
           recommendations={recommendations}
           darkMode={darkMode}

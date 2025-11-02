@@ -10,6 +10,8 @@ export default function PhoneForm({
   setUsageType,
   ageGroup,
   setAgeGroup,
+  additionalQuery,
+  setAdditionalQuery,
   generateRecommendations,
 }) {
   const handleRangeChange = (e) => setBudget(Number(e.target.value));
@@ -87,6 +89,17 @@ export default function PhoneForm({
                 </select>
                 <ChevronDown className="phone-form-select-icon" />
               </div>
+            </div>
+
+            {/* Additional Query */}
+            <div className="phone-form-field">
+              <label>Additional Notes / Custom Query</label>
+              <textarea
+                value={additionalQuery}
+                onChange={(e) => setAdditionalQuery(e.target.value)}
+                placeholder="Add any specific requirements, preferences, or notes..."
+                className="phone-form-textarea"
+              />
             </div>
 
             <button

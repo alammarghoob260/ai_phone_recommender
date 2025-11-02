@@ -1,16 +1,17 @@
 .knowledge-item {
-  padding: 1.5rem;
-  border-radius: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .knowledge-item.light {
-  background-color: #f9fafb;
-  color: #374151;
+  background-color: #f9f9f9;
+  color: #111827;
 }
 
 .knowledge-item.dark {
-  background-color: rgba(31, 41, 55, 0.5);
+  background-color: #1f2937;
   color: #d1d5db;
 }
 
@@ -18,32 +19,21 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .knowledge-item-icon {
-  width: 2rem;
-  height: 2rem;
-  color: #7c3aed; /* Violet 600 */
+  width: 24px;
+  height: 24px;
+  color: #7c3aed;
 }
 
 .knowledge-item-title {
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1.125rem;
 }
 
 .knowledge-item-text {
-  line-height: 1.6;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .knowledge-item {
-    padding: 1rem;
-    border-radius: 1rem;
-  }
-
-  .knowledge-item-title {
-    font-size: 1.125rem;
-  }
+  font-size: 0.95rem;
+  line-height: 1.5;
 }

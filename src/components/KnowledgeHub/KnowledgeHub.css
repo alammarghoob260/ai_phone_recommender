@@ -1,35 +1,29 @@
 .knowledge-hub-overlay {
   position: fixed;
   inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 1rem;
-  backdrop-filter: blur(6px);
-  background-color: rgba(0, 0, 0, 0.6);
-  animation: fadeIn 0.3s ease forwards;
-  z-index: 50;
+  align-items: flex-start;
+  padding-top: 5rem;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.knowledge-hub-overlay.light {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.knowledge-hub-overlay.dark {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .knowledge-hub-container {
+  width: 90%;
   max-width: 900px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 2rem;
+  border-radius: 1rem;
+  background-color: inherit;
   padding: 2rem;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.knowledge-hub-container.light {
-  background-color: white;
-  color: #374151;
-}
-
-.knowledge-hub-container.dark {
-  background-color: #111827;
-  color: #d1d5db;
 }
 
 .knowledge-hub-header {
@@ -40,48 +34,25 @@
 }
 
 .knowledge-hub-title {
-  font-size: 2rem;
-  font-weight: bold;
-  background: linear-gradient(to right, #7c3aed, #3b82f6);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
 .knowledge-hub-close {
-  padding: 0.5rem;
-  border-radius: 1rem;
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  padding: 0.25rem;
 }
 
-.knowledge-hub-close:hover {
-  background-color: rgba(124, 58, 237, 0.1);
+.close-icon {
+  width: 24px;
+  height: 24px;
+  color: #7c3aed;
 }
 
 .knowledge-hub-items {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .knowledge-hub-container {
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-  }
-
-  .knowledge-hub-title {
-    font-size: 1.5rem;
-  }
+  gap: 1rem;
 }
