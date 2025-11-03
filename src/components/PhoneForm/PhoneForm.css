@@ -1,19 +1,24 @@
 .phone-form-section {
-  padding: 5rem 1rem 5rem 1rem;
+  padding: 5rem 1rem;
+  overflow-x: hidden;
 }
 
 .phone-form-container {
+  width: 100%;
   max-width: 48rem;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .phone-form-card {
+  width: 100%;
   border-radius: 2rem;
   padding: 2rem;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  box-sizing: border-box;
 }
 
 .phone-form-card.light {
@@ -131,10 +136,10 @@
   pointer-events: none;
 }
 
-/* Additional Query / Custom Textarea aligned with other inputs */
+/* Textarea */
 .phone-form-textarea {
   width: 100%;
-  padding: 0.75rem 1rem; /* same as select & number input */
+  padding: 0.75rem 1rem;
   border-radius: 1rem;
   border: 2px solid;
   resize: vertical;
@@ -142,7 +147,7 @@
   min-height: 80px;
   max-height: 150px;
   transition: border-color 0.3s, background-color 0.3s, color 0.3s;
-  box-sizing: border-box; /* ensures proper width alignment */
+  box-sizing: border-box;
 }
 
 .phone-form-card.light .phone-form-textarea {
@@ -181,7 +186,7 @@
   transform: scale(1);
 }
 
-/* Responsive */
+/* Responsive Fixes */
 @media (max-width: 768px) {
   .phone-form-card {
     padding: 1.5rem;
@@ -196,4 +201,21 @@
     min-height: 60px;
     font-size: 0.95rem;
   }
+
+  .phone-form-budget {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .phone-form-number {
+    width: 100%;
+  }
+}
+
+/* ✅ Prevent overflow from any input/select/textarea */
+.phone-form-card input,
+.phone-form-card select,
+.phone-form-card textarea {
+  max-width: 100%;
+  box-sizing: border-box;
 }

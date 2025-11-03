@@ -16,7 +16,10 @@ export default function PhoneCard({
         isCompared ? "compared" : ""
       }`}
     >
-      <div className="phone-card-image">{phone.image}</div>
+      <div className="phone-card-image">
+        <img src={phone.image} alt={phone.name} className="phone-card-img" />
+      </div>
+
       <h3 className="phone-card-name">{phone.name}</h3>
       <p className="phone-card-price">₹{phone.price.toLocaleString()}</p>
 
@@ -35,10 +38,18 @@ export default function PhoneCard({
       </div>
 
       <div className="phone-card-links">
-        <a href={phone.amazon}>Amazon</a>
-        <a href={phone.flipkart}>Flipkart</a>
-        <a href={phone.gsmarena}>GSMArena</a>
-        <a href={phone.youtube}>YouTube</a>
+        <a href={phone.amazon} target="_blank" rel="noopener noreferrer">
+          Amazon
+        </a>
+        <a href={phone.flipkart} target="_blank" rel="noopener noreferrer">
+          Flipkart
+        </a>
+        <a href={phone.gsmarena} target="_blank" rel="noopener noreferrer">
+          GSMArena
+        </a>
+        <a href={phone.youtube} target="_blank" rel="noopener noreferrer">
+          YouTube
+        </a>
       </div>
 
       {compareMode && (

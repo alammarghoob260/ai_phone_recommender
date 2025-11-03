@@ -96,7 +96,7 @@ export default function App() {
         generateRecommendations={generateRecommendations}
       />
 
-      {/* {recommendations.length > 0 && (
+      {recommendations.length > 0 && (
         <ResultsSection
           recommendations={recommendations}
           darkMode={darkMode}
@@ -108,7 +108,7 @@ export default function App() {
 
       <BackToTop />
 
-      <Footer darkMode={darkMode} /> */}
+      <Footer darkMode={darkMode} />
     </div>
   );
 }
