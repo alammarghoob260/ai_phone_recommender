@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import "./PhoneForm.css";
 
@@ -12,8 +12,11 @@ export default function PhoneForm({
   setAgeGroup,
   additionalQuery,
   setAdditionalQuery,
-  generateRecommendations,
 }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [recommendations, setRecommendations] = useState("");
+  const [apiError, setApiError] = useState(null);
+
   const handleRangeChange = (e) => setBudget(Number(e.target.value));
 
   const rangeGradient = `linear-gradient(to right, rgb(124, 58, 237) 0%, rgb(37, 99, 235) ${
@@ -21,6 +24,47 @@ export default function PhoneForm({
   }%, ${darkMode ? "rgb(55, 65, 81)" : "rgb(229, 231, 235)"} ${
     ((budget - 10000) / 90000) * 100
   }%, ${darkMode ? "rgb(55, 65, 81)" : "rgb(229, 231, 235)"} 100%)`;
+
+  const generateRecommendations = async () => {
+    if (!usageType || !ageGroup) return;
+
+    setIsLoading(true);
+    setRecommendations("");
+    setApiError(null);
+
+    try {
+      const res = await fetch(
+        "https://marghoob-ai-phone-recommender.vercel.app/api/proxy",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            budget,
+            usageType,
+            ageGroup,
+            additionalNotes: additionalQuery,
+          }),
+        }
+      );
+
+      if (!res.ok) throw new Error(`API error: ${res.status}`);
+
+      const data = await res.json();
+
+      if (data.recommendations) {
+        setRecommendations(data.recommendations);
+      } else {
+        setRecommendations("No recommendations found.");
+      }
+    } catch (err) {
+      console.error("Error fetching recommendations:", err);
+      setApiError(
+        "Something went wrong while fetching recommendations. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section id="form-section" className="phone-form-section">
@@ -104,11 +148,22 @@ export default function PhoneForm({
 
             <button
               onClick={generateRecommendations}
-              disabled={!usageType || !ageGroup}
+              disabled={!usageType || !ageGroup || isLoading}
               className="phone-form-submit"
             >
-              Get My Recommendations
+              {isLoading ? "Analyzing..." : "Get My Recommendations"}
             </button>
+
+            {/* API Error */}
+            {apiError && <div className="error">{apiError}</div>}
+
+            {/* Recommendations */}
+            {recommendations && !isLoading && !apiError && (
+              <div className="phone-results">
+                <h3>AI Recommendations</h3>
+                <pre>{recommendations}</pre>
+              </div>
+            )}
           </div>
         </div>
       </div>
