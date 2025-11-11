@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -38,27 +39,32 @@ export default function App() {
     }
   };
 
+  // ✅ Conditional base URL for dev vs production
+  const API_BASE = import.meta.env.DEV
+    ? "https://marghoob-ai-phone-recommender.vercel.app"
+    : "";
+
   const generateRecommendations = async () => {
     setIsLoading(true);
     setApiError(null);
     setRecommendations(null);
 
     try {
-      // Build input payload
-      const userInput = {
-        budget,
-        usageType,
-        ageGroup,
-        additionalQuery,
-      };
+      const res = await fetch(`${API_BASE}/api/proxy`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          budget,
+          usageType,
+          ageGroup,
+          additionalNotes: additionalQuery,
+        }),
+      });
 
-      // TODO: Replace below with actual GPT API call via your proxy
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // simulate delay
+      if (!res.ok) throw new Error(`API error: ${res.status}`);
 
-      // Dummy AI response (string)
-      const aiResponse = `Based on your budget of ₹${budget}, usage type "${usageType}", age group "${ageGroup}", and additional notes "${additionalQuery}", here are my recommendations:\n\n1. Phone X - Great for gaming\n2. Phone Y - Excellent camera\n3. Phone Z - Long battery life`;
-
-      setRecommendations(aiResponse);
+      const data = await res.json();
+      setRecommendations(data.recommendations);
     } catch (error) {
       console.error("Error generating recommendations:", error);
       setApiError("Failed to fetch recommendations. Please try again.");
@@ -96,7 +102,7 @@ export default function App() {
         setAgeGroup={setAgeGroup}
         additionalQuery={additionalQuery}
         setAdditionalQuery={setAdditionalQuery}
-        generateRecommendations={generateRecommendations}
+        generateRecommendations={generateRecommendations} // ✅ passed down
       />
 
       <ResultsSection
@@ -107,6 +113,7 @@ export default function App() {
         toggleCompare={toggleCompare}
         isLoading={isLoading}
         apiError={apiError}
+        retryCallback={generateRecommendations} // ✅ retry uses backend
       />
 
       <BackToTop />

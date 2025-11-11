@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import "./PhoneForm.css";
+
 export default function PhoneForm({
   darkMode,
   budget,
@@ -24,6 +25,11 @@ export default function PhoneForm({
     ((budget - 10000) / 90000) * 100
   }%, ${darkMode ? "rgb(55, 65, 81)" : "rgb(229, 231, 235)"} 100%)`;
 
+  // ✅ Conditional base URL for local vs production
+  const API_BASE = import.meta.env.DEV
+    ? "https://marghoob-ai-phone-recommender.vercel.app"
+    : "";
+
   const generateRecommendations = async () => {
     if (!usageType || !ageGroup) return;
 
@@ -32,19 +38,16 @@ export default function PhoneForm({
     setApiError(null);
 
     try {
-      const res = await fetch(
-        "https://marghoob-ai-phone-recommender.vercel.app/api/proxy",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            budget,
-            usageType,
-            ageGroup,
-            additionalNotes: additionalQuery,
-          }),
-        }
-      );
+      const res = await fetch(`${API_BASE}/api/proxy`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          budget,
+          usageType,
+          ageGroup,
+          additionalNotes: additionalQuery,
+        }),
+      });
 
       if (!res.ok) throw new Error(`API error: ${res.status}`);
 
